@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Exclusive Invitation</title>
+    <style>
+        :root {
+            --background-color: #f7f3f0;
+            --text-color: #4a4a4a;
+            --highlight-color: #e57373;
+            --box-shadow-color: rgba(229, 115, 115, 0.5);
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px var(--box-shadow-color);
+            max-width: 450px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: var(--highlight-color);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+        input[type="text"] {
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 80%;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: var(--highlight-color);
+            outline: none;
+        }
+        button {
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #c06363;
+            transform: translateY(-2px);
+        }
+        #message {
+            color: red;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You've Received a Private Message</h1>
+        <p>This is a very important message for "only you". To unlock the contents, please enter the one word that describes our beginning.</p>
+        
+        <input type="text" id="passwordInput" placeholder="Enter the secret word..." onkeypress="if(event.keyCode==13) checkPassword()">
+        <button onclick="checkPassword()">Unlock</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // *** IMPORTANT: CHANGE THIS TO YOUR SECRET PASSWORD ***
+        const SECRET_WORD = "serendipitous"; 
+        
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.trim().toLowerCase();
+            const message = document.getElementById('message');
+
+            if (input === SECRET_WORD) {
+                // If correct, redirect to the proposal page
+                window.location.href = "proposal.html"; 
+            } else {
+                message.textContent = "That's not quite right. Try again, my love!";
+                document.getElementById('passwordInput').value = ""; // Clear input
+            }
+        }
+    </script>
+</body>
+</html>

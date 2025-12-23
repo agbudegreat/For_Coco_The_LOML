@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Most Important Question</title>
+    <style>
+        /* ------------------------------------- */
+        /* CSS STYLES */
+        /* ------------------------------------- */
+
+        :root {
+            --background-color: #f7f3f0;
+            --text-color: #4a4a4a;
+            --highlight-color: #e57373;
+            --yes-color: #69b078; /* Green for Yes */
+            --no-color: #b06969;  /* Reddish-brown for No */
+            --box-shadow-color: rgba(229, 115, 115, 0.5);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px var(--box-shadow-color);
+            max-width: 550px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: var(--highlight-color);
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--text-color);
+            font-size: 1.2em;
+            margin-top: 30px;
+        }
+        
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        /* Button Container */
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        /* Button Styling */
+        .choice-button {
+            flex-grow: 1; /* Make them expand evenly */
+            margin: 0 10px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Yes Button */
+        #yesButton {
+            background-color: var(--yes-color);
+            color: white;
+        }
+        #yesButton:hover {
+            background-color: #5aa169;
+            transform: scale(1.05);
+        }
+
+        /* No Button (make it harder to click!) */
+        #noButton {
+            background-color: var(--no-color);
+            color: white;
+            position: relative; /* Needed for hover movement */
+        }
+        /* The "No" button will run away a little bit! */
+        #noButton:hover {
+            transform: translate(5px, 5px) scale(1.05); 
+            background-color: #a15a5a;
+        }
+
+        /* Result message area */
+        #resultMessage {
+            margin-top: 40px;
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--text-color);
+            min-height: 50px; /* Reserve space */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For My One and Only, Coco</h1>
+        
+        <div><p>My love, I know I say it, but your beauty is genuinely breathtaking the kind that truly floors me. You are a Queen who commands every space you enter, and I'm eternally grateful the universe knew I needed you and brought you into my life.
+
+It's actually crazy how quickly we just clicked. That week we've shared was instantly the brightest highlight of my entire month, and I feel so unbelievably happy around you.
+
+I know I'm working on getting my life sorted out financially and physically but please know that I'm fully invested in us. I truly believe we can be an amazing, compatible team who supports each other through everything and grows together. You are precious to me, and I cherish you so much, Confidence.
+        <p>I know this is a bit silly, but I had to make this moment special because you are special.</p>
+</div>        
+        <h2>Will you make me the happiest person and officially be my girlfriend?</h2>
+        
+        <div class="button-group">
+            <button id="yesButton" class="choice-button" onclick="handleResponse('yes')">
+                Yes, Absolutely!
+            </button>
+            <button id="noButton" class="choice-button" onclick="handleResponse('no')">
+                No
+            </button>
+        </div>
+
+        <div id="resultMessage"></div>
+    </div>
+
+    <script>
+        function handleResponse(response) {
+            const resultDiv = document.getElementById('resultMessage');
+            
+            if (response === 'yes') {
+                resultDiv.innerHTML = "<span style='color: var(--yes-color);'>🥳 YES! I LOVE YOU! This calls for a celebration!</span>";
+                
+            } else if (response === 'no') {
+                // To keep the moment sweet, we don't allow "No"
+                resultDiv.innerHTML = "<span style='color: var(--no-color);'>I don't believe you. Try 'Yes' instead. 😉</span>";
+                // We could also reset the 'No' button's position here if you made it move wildly.
+            }
+        }
+    </script>
+</body>
+</html>
